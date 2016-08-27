@@ -2,12 +2,18 @@ package view;
 
 import java.awt.Dialog;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -23,6 +29,7 @@ import javax.swing.filechooser.FileFilter;
 
 import presenter.MainViewPresenter;
 import model.AndroidDevice;
+import model.tableModel.AndroidDeviceTableModel;
 
 public class MainView  extends JFrame implements ActionListener {
 
@@ -33,6 +40,7 @@ public class MainView  extends JFrame implements ActionListener {
 	public final static String UNINSTALL_APPS_BUTTON_COMMAND = "uninstallApps";
 	public final static String UPDATE_DEVICE_LIST_BUTTON_COMMAND = "updateDeviceList";
 	public final static String SEND_FILE_BUTTON_COMMAND = "sendFile";
+	public final static String SOURCE_CODE_COMMAND = "sourceCode";
 
 	private final static long serialVersionUID = 1L;
 
@@ -50,10 +58,11 @@ public class MainView  extends JFrame implements ActionListener {
 	private JButton mUninstallAppsJButton;
 	private JButton mUpdateDeviceList;
 	private JButton mSendFileButton;
+	private JButton mSourceCodeButton;
 	private JDialog mProgressDialog;
 	private JLabel mProgressDialogJLablel;
 	private JFileChooser mJFileChooser;
-
+	
 	public static void main(String[] args) {
 		new MainView();
 	}
@@ -69,6 +78,18 @@ public class MainView  extends JFrame implements ActionListener {
 		mUninstallAppsJButton = new JButton("Uninstall app(s)");
 		mUpdateDeviceList = new JButton("Update devices list");
 		mSendFileButton = new JButton("Push file(s)");
+		
+		try {
+			ImageIcon imageIcon;
+			imageIcon = new ImageIcon(ImageIO.read(this.getClass().getResource("/images/github_logo.png")));
+			Image image = imageIcon.getImage(); 
+			Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
+			imageIcon = new ImageIcon(newimg); 
+			mSourceCodeButton = new JButton(imageIcon);
+			mSourceCodeButton.setBorder(BorderFactory.createEmptyBorder());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} 
 		mProgressDialogJLablel = new JLabel();
 		mProgressDialog = new JDialog(this, "Progress dialog", Dialog.ModalityType.APPLICATION_MODAL);
 		mProgressDialog.setBounds(350, 350, 200, 200);
@@ -85,15 +106,18 @@ public class MainView  extends JFrame implements ActionListener {
 		mUninstallAppsJButton.setActionCommand(UNINSTALL_APPS_BUTTON_COMMAND);
 		mUpdateDeviceList.setActionCommand(UPDATE_DEVICE_LIST_BUTTON_COMMAND);
 		mSendFileButton.setActionCommand(SEND_FILE_BUTTON_COMMAND);
-
-		mDetailsJButton.addActionListener(this);
+		mSourceCodeButton.setActionCommand(SOURCE_CODE_COMMAND);
+		
+		
 		mCreateBackupJButton.addActionListener(this);
 		mRestoreBackupJButton.addActionListener(this);
 		mInstallAppsJButton.addActionListener(this);
 		mUninstallAppsJButton.addActionListener(this);
 		mSendFileButton.addActionListener(this);
 		mUpdateDeviceList.addActionListener(this);
-
+		mDetailsJButton.addActionListener(this);
+		mSourceCodeButton.addActionListener(this);
+		
 		mButtonJPanel = new JPanel();
 		mButtonJPanel.setLayout(new BoxLayout(mButtonJPanel, BoxLayout.X_AXIS));
 		mButtonJPanel.add(mDetailsJButton);
@@ -103,6 +127,7 @@ public class MainView  extends JFrame implements ActionListener {
 		mButtonJPanel.add(mUninstallAppsJButton);
 		mButtonJPanel.add(mSendFileButton);
 		mButtonJPanel.add(mUpdateDeviceList);
+		
 
 		mAndroidDeviceTable = new JTable(mAndroidDeviceTableModel);
 		mAndroidDeviceTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -118,6 +143,7 @@ public class MainView  extends JFrame implements ActionListener {
 		mJPanel.setLayout(new BoxLayout(mJPanel, BoxLayout.Y_AXIS));
 		mJPanel.add(mButtonJPanel);
 		mJPanel.add(jScrollPane);
+		mJPanel.add(mSourceCodeButton);
 
 		add(mJPanel);
 		setSize(1000, 800);

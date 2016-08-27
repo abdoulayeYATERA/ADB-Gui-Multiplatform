@@ -20,6 +20,8 @@ import javax.swing.event.ListSelectionListener;
 
 import presenter.DeviceDetailPresenter;
 import model.AndroidDevice;
+import model.tableModel.AndroidDeviceTableModel;
+import model.tableModel.DeviceDetailModel;
 
 public class DeviceDetailView extends JFrame implements ActionListener {
 	private final String TAG = getClass().getSimpleName();

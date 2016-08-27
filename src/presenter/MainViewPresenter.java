@@ -1,8 +1,12 @@
 package presenter;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -18,9 +22,10 @@ import model.command.Command;
 import model.command.CommandManager;
 import model.command.CommandResponse;
 import model.command.CommandManager.CommandManagerCallBack;
+import model.tableModel.DeviceDetailModel;
 import sun.awt.motif.MFontConfiguration;
 import util.CommandResponseParser;
-import view.DeviceDetailModel;
+import util.NetworkUtil;
 import view.DeviceDetailView;
 import view.MainView;
 
@@ -221,6 +226,17 @@ public class MainViewPresenter {
 		} else if (actionCommand.equals(MainView.DETAILS_BUTTON_COMMAND)
 				|| actionCommand.equals(MainView.UNINSTALL_APPS_BUTTON_COMMAND)) {
 			openDeviceDetailJFrame(selectedDeviceList);
+		} else if (actionCommand.equalsIgnoreCase(MainView.SOURCE_CODE_COMMAND)) {
+			if(Desktop.isDesktopSupported())
+			{
+				try {
+					Desktop.getDesktop().browse(new URI(NetworkUtil.SOURCE_CODE_URL));
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (URISyntaxException e1) {
+					e1.printStackTrace();
+				}
+			}
 		}
 	}
 
@@ -315,7 +331,7 @@ public class MainViewPresenter {
 			}
 		});
 	}
-	
+
 	public void openDeviceDetailJFrame(List<AndroidDevice> selectedDeviceList) {
 		//you can't see me!
 		mMainView.setVisible(false); 
@@ -420,10 +436,10 @@ public class MainViewPresenter {
 	public void uninstallApps(File choosedFile, List<AndroidDevice> selectedDeviceArray) {
 		System.out.println("uninstallApps");
 		//you can't see me!
-				mMainView.setVisible(false); 
-				//Destroy the JFrame object
-				mMainView.dispose(); 
-				DeviceDetailView deviceDetailView = new DeviceDetailView(selectedDeviceArray, "Uninstall Apps");
+		mMainView.setVisible(false); 
+		//Destroy the JFrame object
+		mMainView.dispose(); 
+		DeviceDetailView deviceDetailView = new DeviceDetailView(selectedDeviceArray, "Uninstall Apps");
 
 	}
 

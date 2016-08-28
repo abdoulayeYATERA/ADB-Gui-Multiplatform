@@ -2,6 +2,8 @@
  Graphical Interface for Android Debug Bridge (adb)
  
  To install adb :
+ 
+ 
   Windows :
  
      http://xiaomitips.com/download/adb-setup-v1-4-3/

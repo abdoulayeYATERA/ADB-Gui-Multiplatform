@@ -3,8 +3,11 @@
  
  To install adb :
   Windows :
+ 
      http://xiaomitips.com/download/adb-setup-v1-4-3/
+
   Linux : 
+
      sudo apt-get install android-tools-adb android-tools-fastboot
  
  [ADB MPF 1.0.0 DOWNLOAD LINK !](https://github.com/abdoulayeYATERA/ADB-Gui-Multiplatform/files/440665/adb_mpf_gui_1.0.0.zip)

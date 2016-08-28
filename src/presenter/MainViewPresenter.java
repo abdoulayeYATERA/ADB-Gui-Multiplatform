@@ -23,7 +23,6 @@ import model.command.CommandManager;
 import model.command.CommandResponse;
 import model.command.CommandManager.CommandManagerCallBack;
 import model.tableModel.DeviceDetailModel;
-import sun.awt.motif.MFontConfiguration;
 import util.CommandResponseParser;
 import util.NetworkUtil;
 import view.DeviceDetailView;

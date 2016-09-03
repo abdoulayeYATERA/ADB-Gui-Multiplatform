@@ -1,4 +1,4 @@
-package model;
+package com.yadevapp.adbmpf.model;
 
 public class AndroidApp implements Comparable<AndroidApp> {
 	private final String TAG = getClass().getSimpleName();

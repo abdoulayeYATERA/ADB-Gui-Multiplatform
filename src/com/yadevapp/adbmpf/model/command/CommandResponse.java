@@ -1,4 +1,4 @@
-package model.command;
+package com.yadevapp.adbmpf.model.command;
 
 public class CommandResponse {
 	private final String TAG = getClass().getSimpleName();

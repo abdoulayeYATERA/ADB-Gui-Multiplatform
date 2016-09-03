@@ -1,4 +1,4 @@
-package presenter;
+package com.yadevapp.adbmpf.presenter;
 
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -16,17 +16,18 @@ import java.util.Scanner;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import model.AndroidApp;
-import model.AndroidDevice;
-import model.command.Command;
-import model.command.CommandManager;
-import model.command.CommandResponse;
-import model.command.CommandManager.CommandManagerCallBack;
-import model.tableModel.DeviceDetailModel;
-import util.CommandResponseParser;
-import util.NetworkUtil;
-import view.DeviceDetailView;
-import view.MainView;
+import com.yadevapp.adbmpf.model.AndroidApp;
+import com.yadevapp.adbmpf.model.AndroidDevice;
+import com.yadevapp.adbmpf.model.command.Command;
+import com.yadevapp.adbmpf.model.command.CommandManager;
+import com.yadevapp.adbmpf.model.command.CommandResponse;
+import com.yadevapp.adbmpf.model.command.CommandManager.CommandManagerCallBack;
+import com.yadevapp.adbmpf.model.tableModel.DeviceDetailModel;
+import com.yadevapp.adbmpf.util.CommandResponseParser;
+import com.yadevapp.adbmpf.util.CommandUtil;
+import com.yadevapp.adbmpf.util.NetworkUtil;
+import com.yadevapp.adbmpf.view.DeviceDetailView;
+import com.yadevapp.adbmpf.view.MainView;
 
 public class MainViewPresenter {
 	private final String TAG = getClass().getSimpleName();
@@ -309,7 +310,7 @@ public class MainViewPresenter {
 
 	public void createBackup(File choosedFile, List<AndroidDevice> selectedDeviceArray) {
 		Command command = new Command();
-		command.setmCommandString("adb -s " + selectedDeviceArray.get(0).getmId() +  " backup -f " + choosedFile.getAbsolutePath() + " -apk -obb -noshared -all -nosystem");
+		command.setmCommandString("adb -s " + selectedDeviceArray.get(0).getmId() +  " backup -f " + CommandUtil.QUOTE + choosedFile.getAbsolutePath() + CommandUtil.QUOTE + " -apk -obb -noshared -all -nosystem");
 		mCommandManager.addCommandToQueue(command);
 		mCommandManager.executeQueue(new CommandManagerCallBack() {
 
@@ -345,7 +346,7 @@ public class MainViewPresenter {
 		StringBuilder commandStringBuilder = new StringBuilder();
 
 		for (AndroidDevice androidDevice : selectedDeviceArray) {
-			commandStringBuilder.append("adb -s " + androidDevice.getmId() + " restore " + choosedFile.getAbsolutePath() + " & ");
+			commandStringBuilder.append("adb -s " + androidDevice.getmId() + " restore " + CommandUtil.QUOTE + choosedFile.getAbsolutePath() + CommandUtil.QUOTE + " & ");
 		}
 
 		//remove last &
@@ -404,7 +405,7 @@ public class MainViewPresenter {
 			StringBuilder installApkCommandStringBuilder = new StringBuilder();
 
 			for (AndroidDevice androidDevice : selectedDeviceArray) {
-				installApkCommandStringBuilder.append("adb -s " + androidDevice.getmId() + " install -r " + apkToInstall.getAbsolutePath() + " & ");
+				installApkCommandStringBuilder.append("adb -s " + androidDevice.getmId() + " install -r " + CommandUtil.QUOTE + apkToInstall.getAbsolutePath() + CommandUtil.QUOTE + " & ");
 			}
 			//remove the last &
 			installApkCommandStringBuilder.delete(installApkCommandStringBuilder.length() - 2, installApkCommandStringBuilder.length());
@@ -449,7 +450,7 @@ public class MainViewPresenter {
 
 		for (AndroidDevice androidDevice :  selectedDeviceArray) {
 			sendFileCommandStringBuilder.append(
-					"adb -s " + androidDevice.getmId() + " push " + choosedFile.getAbsolutePath() + " /sdcard/" + choosedFile.getName() + " & "
+					"adb -s " + androidDevice.getmId() + " push " + CommandUtil.QUOTE + choosedFile.getAbsolutePath() + CommandUtil.QUOTE + " " + CommandUtil.QUOTE + "/sdcard/" + choosedFile.getName() + CommandUtil.QUOTE + " & "
 					);
 		}
 		//remove last &

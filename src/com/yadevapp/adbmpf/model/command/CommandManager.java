@@ -1,4 +1,4 @@
-package model.command;
+package com.yadevapp.adbmpf.model.command;
 
 import java.util.ArrayDeque;
 import java.util.logging.Level;

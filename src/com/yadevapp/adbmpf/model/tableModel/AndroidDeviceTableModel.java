@@ -1,11 +1,11 @@
-package model.tableModel;
+package com.yadevapp.adbmpf.model.tableModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.AndroidDevice;
+import com.yadevapp.adbmpf.model.AndroidDevice;
 
 /**
  * 

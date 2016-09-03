@@ -1,4 +1,4 @@
-package view;
+package com.yadevapp.adbmpf.view;
 
 import java.awt.Dialog;
 import java.awt.EventQueue;
@@ -27,9 +27,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
 
-import presenter.MainViewPresenter;
-import model.AndroidDevice;
-import model.tableModel.AndroidDeviceTableModel;
+import com.yadevapp.adbmpf.model.AndroidDevice;
+import com.yadevapp.adbmpf.model.tableModel.AndroidDeviceTableModel;
+import com.yadevapp.adbmpf.presenter.MainViewPresenter;
 
 public class MainView  extends JFrame implements ActionListener {
 

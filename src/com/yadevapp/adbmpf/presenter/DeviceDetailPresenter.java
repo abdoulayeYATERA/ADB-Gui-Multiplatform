@@ -1,18 +1,18 @@
-package presenter;
+package com.yadevapp.adbmpf.presenter;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import model.AndroidApp;
-import model.AndroidDevice;
-import model.command.Command;
-import model.command.CommandManager;
-import model.command.CommandManager.CommandManagerCallBack;
-import model.command.CommandResponse;
-import view.DeviceDetailView;
-import view.MainView;
+import com.yadevapp.adbmpf.model.AndroidApp;
+import com.yadevapp.adbmpf.model.AndroidDevice;
+import com.yadevapp.adbmpf.model.command.Command;
+import com.yadevapp.adbmpf.model.command.CommandManager;
+import com.yadevapp.adbmpf.model.command.CommandResponse;
+import com.yadevapp.adbmpf.model.command.CommandManager.CommandManagerCallBack;
+import com.yadevapp.adbmpf.view.DeviceDetailView;
+import com.yadevapp.adbmpf.view.MainView;
 
 public class DeviceDetailPresenter {
 

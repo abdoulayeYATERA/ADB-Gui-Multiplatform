@@ -1,12 +1,12 @@
-package model.tableModel;
+package com.yadevapp.adbmpf.model.tableModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.AndroidApp;
-import model.AndroidDevice;
+import com.yadevapp.adbmpf.model.AndroidApp;
+import com.yadevapp.adbmpf.model.AndroidDevice;
 
 public class DeviceDetailModel extends AbstractTableModel {
 	private String[] mColumnNameArray = { "count", "package name", "version name", "version code", "on device number"};

@@ -1,4 +1,4 @@
-package util;
+package com.yadevapp.adbmpf.util;
 
 public class ComputerUtil {
 	private final String TAG = ComputerUtil.class.getSimpleName();

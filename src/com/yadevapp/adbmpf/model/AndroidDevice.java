@@ -1,4 +1,4 @@
-package model;
+package com.yadevapp.adbmpf.model;
 
 import java.util.ArrayList;
 import java.util.List;

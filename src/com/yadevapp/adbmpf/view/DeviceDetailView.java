@@ -1,4 +1,4 @@
-package view;
+package com.yadevapp.adbmpf.view;
 
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -18,10 +18,10 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import presenter.DeviceDetailPresenter;
-import model.AndroidDevice;
-import model.tableModel.AndroidDeviceTableModel;
-import model.tableModel.DeviceDetailModel;
+import com.yadevapp.adbmpf.model.AndroidDevice;
+import com.yadevapp.adbmpf.model.tableModel.AndroidDeviceTableModel;
+import com.yadevapp.adbmpf.model.tableModel.DeviceDetailModel;
+import com.yadevapp.adbmpf.presenter.DeviceDetailPresenter;
 
 public class DeviceDetailView extends JFrame implements ActionListener {
 	private final String TAG = getClass().getSimpleName();

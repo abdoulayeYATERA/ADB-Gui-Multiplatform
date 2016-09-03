@@ -1,12 +1,12 @@
-package util;
+package com.yadevapp.adbmpf.util;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import model.AndroidApp;
-import model.AndroidDevice;
+import com.yadevapp.adbmpf.model.AndroidApp;
+import com.yadevapp.adbmpf.model.AndroidDevice;
 
 public class CommandResponseParser {
 	private final static String TAG = CommandResponseParser.class.getClass().getSimpleName();

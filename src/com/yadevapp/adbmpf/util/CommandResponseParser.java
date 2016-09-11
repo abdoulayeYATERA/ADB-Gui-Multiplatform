@@ -46,7 +46,7 @@ public class CommandResponseParser {
 
 			if (line.isEmpty() == false) {
 				String deviceProp = line.substring(line.lastIndexOf("[") + 1 , line.length() - 1);
-				//System.out.println(deviceProp);
+				System.out.println(deviceProp);
 				if (line.contains("ro.product.name")) {
 					androidDevice.setmName(deviceProp);
 				} else if (line.contains("ro.product.model")) {

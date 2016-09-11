@@ -12,7 +12,7 @@
 
      sudo apt-get install android-tools-adb android-tools-fastboot
  
- [ADB MPF 1.1.0 DOWNLOAD LINK !](https://github.com/abdoulayeYATERA/ADB-Gui-Multiplatform/files/453378/ADB-MPF_1.1.0.zip)
+ [ADB MPF 1.2.0 DOWNLOAD LINK !](https://github.com/abdoulayeYATERA/ADB-Gui-Multiplatform/files/466044/AndroidMDM-1.2.0.zip)
 
 ![](https://cloud.githubusercontent.com/assets/9435855/18027436/af0d4b18-6c63-11e6-9e53-6d0ba70e3bac.png)
 
